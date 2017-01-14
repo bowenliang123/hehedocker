@@ -2,6 +2,8 @@ FROM hub.c.163.com/library/node:6.9.4-alpine
 
 RUN npm config set loglevel=warn
 
+RUN npm install bower@1.7.9
+
 # 安装运行或构建的依赖包
 RUN \
   apk update && apk add \
@@ -45,20 +47,12 @@ RUN autoreconf -fiv \
 COPY ./jpeg-archive-2.1.1 /jpeg-archive
 #RUN apk add --update jpeg-dev
 RUN cd /jpeg-archive/ && make && make install
-
+RUN jpeg-archive
+RUN jpeg-recompress
 
 #################################################################
 #  NPM相关
 
-# 安装tpm、bower
-
-RUN npm install -g \
-    # image-webpack-loader
-    #(https://github.com/tcoopman/image-webpack-loader)
-#    image-webpack-loader \
-
-    # bower
-    bower@1.7.9
 
 #RUN mkdir /tmp_code
 WORKDIR /tmp_code
