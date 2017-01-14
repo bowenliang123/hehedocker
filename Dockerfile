@@ -73,29 +73,29 @@ RUN  \
 # 安装rpg
 #RUN npm install -g git+ssh://git@git.ucweb.local:pf/rpg.git
 
-RUN npm install -g tnpm --registry=http://registry.npm.alibaba-inc.com
-
-################################################################################
-# 应用逻辑相关
-
-# 加载应用逻辑
-ENV APP_HOME /code
-ENV TEMP_HOME /tmp_code
-
-
-
-# 安装npm依赖库，并缓存
-ADD ./package.json ${TEMP_HOME}/package.json
-RUN cd ${TEMP_HOME} && tnpm install
-RUN mkdir -p ${APP_HOME} && cp -a ${TEMP_HOME}/node_modules ${APP_HOME}
-
-
-# 复制本地代码
-COPY ./ ${APP_HOME}
-
-
-# 暴露端口
-EXPOSE 5000
-
-# 入口命令
-ENTRYPOINT ["/bin/bash"]
+#RUN npm install -g tnpm --registry=http://registry.npm.alibaba-inc.com
+#
+#################################################################################
+## 应用逻辑相关
+#
+## 加载应用逻辑
+#ENV APP_HOME /code
+#ENV TEMP_HOME /tmp_code
+#
+#
+#
+## 安装npm依赖库，并缓存
+#ADD ./package.json ${TEMP_HOME}/package.json
+#RUN cd ${TEMP_HOME} && tnpm install
+#RUN mkdir -p ${APP_HOME} && cp -a ${TEMP_HOME}/node_modules ${APP_HOME}
+#
+#
+## 复制本地代码
+#COPY ./ ${APP_HOME}
+#
+#
+## 暴露端口
+#EXPOSE 5000
+#
+## 入口命令
+#ENTRYPOINT ["/bin/bash"]
