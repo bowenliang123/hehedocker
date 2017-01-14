@@ -47,8 +47,6 @@ RUN autoreconf -fiv \
 COPY ./jpeg-archive-2.1.1 /jpeg-archive
 #RUN apk add --update jpeg-dev
 RUN cd /jpeg-archive/ && make && make install
-RUN jpeg-archive
-RUN jpeg-recompress
 
 #################################################################
 #  NPM相关
