@@ -6,7 +6,7 @@ RUN npm install bower@1.7.9
 
 # 安装运行或构建的依赖包
 RUN \
-  apk update && apk add \
+  apk add --update \
 
       # runtime dependencies
 
