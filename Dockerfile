@@ -1,6 +1,6 @@
 FROM hub.c.163.com/library/node:6.9.4-alpine
 
-RUN npm config set loglevel=warn
+RUN npm config set loglevel=error
 
 RUN npm install bower@1.7.9
 
