@@ -1,9 +1,8 @@
 FROM hub.c.163.com/library/ubuntu:16.04
 
-RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list
-
-RUN apt-get update
-RUN apt-get install -y curl xz-utils libpng-dev
+RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list &&\
+    apt-get update &&\
+    apt-get install -y curl xz-utils libpng-dev
 
 # 安装nodejs
 COPY ./node/node-v6.9.4-linux-x64.tar.xz /
