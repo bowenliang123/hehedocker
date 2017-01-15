@@ -14,7 +14,6 @@ ENV NODE_VERSION=6.9.4 \
     BOWER_VERSION=1.7.9
 
 COPY ./node/node-v${NODE_VERSION}-linux-x64.tar.xz /
-RUN ls
 RUN tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-components=1 &&\
     rm /node-v${NODE_VERSION}-linux-x64.tar.xz &&\
     ln -s /usr/local/bin/node /usr/local/bin/nodejs &&\
