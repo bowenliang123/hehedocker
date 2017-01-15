@@ -15,7 +15,7 @@ ENV NODE_VERSION=6.9.4 \
 
 COPY ./node/node-v${NODE_VERSION}-linux-x64.tar.xz /
 RUN tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-components=1 &&\
-    rm /node-${NODE_VERSION}-linux-x64.tar.xz
+    rm /node-${NODE_VERSION}-linux-x64.tar.xz &&\
     ln -s /usr/local/bin/node /usr/local/bin/nodejs &&\
     node -v && npm -v && \
 
