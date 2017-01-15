@@ -2,15 +2,25 @@ FROM hub.c.163.com/library/ubuntu:16.04
 
 RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list &&\
     apt-get update &&\
-    apt-get install -y curl xz-utils libpng-dev
+
+    # 安装依赖库
+    apt-get install -y curl xz-utils libpng-dev &&\
+
+    # cleanup
+    rm -rf /var/lib/apt/lists/*
 
 # 安装nodejs
-COPY ./node/node-v6.9.4-linux-x64.tar.xz /
-RUN tar -xJf "node-v6.9.4-linux-x64.tar.xz" -C /usr/local --strip-components=1 &&\
-    ln -s /usr/local/bin/node /usr/local/bin/nodejs &&\
-    node -v && npm -v
+ENV NODE_VERION 6.9.4 &&\
+    BOWER_VERSION 1.7.9
 
-RUN npm -g install bower svgo
+COPY ./node/node-v$NODE_VERION-linux-x64.tar.xz /
+RUN tar -xJf "node-v$NODE_VERION-linux-x64.tar.xz" -C /usr/local --strip-components=1 &&\
+    rm /node-$NODE_VERION-linux-x64.tar.xz
+    ln -s /usr/local/bin/node /usr/local/bin/nodejs &&\
+    node -v && npm -v && \
+
+    # 安装bower
+    npm -g install bower@$BOWER_VERSION svgo
 
 # 入口命令
 ENTRYPOINT ["/bin/bash"]
