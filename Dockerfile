@@ -10,8 +10,8 @@ RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list &&\
     rm -rf /var/lib/apt/lists/*
 
 # 安装nodejs
-ENV NODE_VERION 6.9.4 &&\
-    BOWER_VERSION 1.7.9
+ENV NODE_VERION=6.9.4 \
+    BOWER_VERSION=1.7.9
 
 COPY ./node/node-v$NODE_VERION-linux-x64.tar.xz /
 RUN tar -xJf "node-v$NODE_VERION-linux-x64.tar.xz" -C /usr/local --strip-components=1 &&\
