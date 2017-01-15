@@ -1,5 +1,9 @@
 FROM hub.c.163.com/library/ubuntu:16.04
 
+RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list
+
+RUN cat /etc/apt/sources.list
+
 ENV NPM_CONFIG_LOGLEVEL warn
 ENV NODE_VERSION 6.9.4
 
