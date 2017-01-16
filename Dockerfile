@@ -1,10 +1,10 @@
-FROM hub.c.163.com/library/ubuntu:16.04
+FROM ubuntu:16.04
 
 RUN sed -i s@archive.ubuntu.com@mirrors.aliyun.com@g /etc/apt/sources.list &&\
     apt-get update &&\
 
     # 安装依赖库
-    apt-get install -y curl xz-utils libpng-dev &&\
+    apt-get install -y curl xz-utils libpng-dev vim &&\
 
     # cleanup
     rm -rf /var/lib/apt/lists/*
