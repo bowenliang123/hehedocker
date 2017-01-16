@@ -22,5 +22,8 @@ RUN tar -xJf "node-v${NODE_VERSION}-linux-x64.tar.xz" -C /usr/local --strip-comp
     # 安装bower
     npm -g install bower@${BOWER_VERSION} svgo
 
+# 安装tnpm
+RUN npm install -g tnpm --registry=http://registry.npm.alibaba-inc.com
+
 # 入口命令
 ENTRYPOINT ["/bin/bash"]
